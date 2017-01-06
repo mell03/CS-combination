@@ -1,1 +1,1 @@
-include ':app', ':usbSerialForAndroid', ':Java-WebSocket-master'
+include ':app', ':Java-WebSocket-master', ':usbSerialForAndroid'

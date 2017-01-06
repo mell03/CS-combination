@@ -36,7 +36,7 @@ public class SerialConnector {
 	public static final int TARGET_VENDOR_ID3 = 1027;	// FT232R
 	public static final int TARGET_VENDOR_ID4 = 6790;	// CH340G
 	public static final int TARGET_VENDOR_ID5 = 4292;	// CP210x
-	public static final int BAUD_RATE = 250000;
+	public static final int BAUD_RATE = 115200;
 	
 	
 	/*****************************************************
@@ -122,7 +122,7 @@ public class SerialConnector {
 	******************************************************/
 	// send string to remote
 	public void sendCommand(String cmd) {
-		
+
 		if(mPort != null && cmd != null) {
 			try {
 				mPort.write(cmd.getBytes(), cmd.length());		// Send to remote device 

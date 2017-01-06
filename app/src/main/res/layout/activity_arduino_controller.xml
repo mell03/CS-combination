@@ -10,15 +10,30 @@
         android:layout_width="fill_parent" 
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:background="#efefef">
+        android:background="#efefef"
+		android:orientation="vertical">
 	    <TextView
+			android:visibility="gone"
 	        android:id="@+id/text_info"
 	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
+	        android:layout_height="wrap_content"
 	        android:gravity="center|center_vertical"
 	        android:textSize="32sp"
 	        android:text="@string/blank_msg"
 	         />
+		<TextView
+			android:id="@+id/ipaddr"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+		<EditText
+			android:id="@+id/edit_msg_to_send"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+		<Button
+			android:text="Send Message"
+			android:onClick="onClickSendBtn"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
     </LinearLayout>
     
     <LinearLayout
@@ -27,10 +42,11 @@
         android:layout_height="0dip"
         android:layout_weight="2"
         android:background="#e0e0e0">
+
 	    <TextView
 	        android:id="@+id/text_serial"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
+	        android:layout_height="match_parent"
 	        android:textSize="12sp"
 	         />
     </LinearLayout>
