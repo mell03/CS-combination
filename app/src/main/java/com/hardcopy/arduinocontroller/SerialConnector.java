@@ -8,6 +8,7 @@ import android.content.Context;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -36,7 +37,7 @@ public class SerialConnector {
 	public static final int TARGET_VENDOR_ID3 = 1027;	// FT232R
 	public static final int TARGET_VENDOR_ID4 = 6790;	// CH340G
 	public static final int TARGET_VENDOR_ID5 = 4292;	// CP210x
-	public static final int BAUD_RATE = 115200;
+	public static final int BAUD_RATE = 250000;
 	
 	
 	/*****************************************************
@@ -90,9 +91,9 @@ public class SerialConnector {
 		try {
 			mPort.open(connection);
 			mPort.setParameters(BAUD_RATE, 8, 1, 0);		// baudrate:9600, dataBits:8, stopBits:1, parity:N
-//			byte buffer[] = new byte[16];
-//			int numBytesRead = mPort.read(buffer, 1000);
-//			Log.d(TAG, "Read " + numBytesRead + " bytes.");
+			byte buffer[] = new byte[50];
+			int numBytesRead = mPort.read(buffer, 1000);
+			Log.d("asdf", "Read " + numBytesRead + " bytes.");
 		} catch (IOException e) {
 			// Deal with error.
 			mListener.onReceive(Constants.MSG_SERIAL_ERROR, 0, 0, "Error: Cannot open port \n" + e.toString() + "\n", null);
@@ -200,12 +201,12 @@ public class SerialConnector {
 						int numBytesRead = mPort.read(buffer, 1000);
 						if(numBytesRead > 0) {
 							Log.d(tag, "run : read bytes = " + numBytesRead);
-							
 							// Print message length
 							Message msg = mHandler.obtainMessage(Constants.MSG_READ_DATA_COUNT, numBytesRead, 0, 
 									new String(buffer));
+
 							mHandler.sendMessage(msg);
-							
+
 							// Extract data from buffer
 							for(int i=0; i<numBytesRead; i++) {
 								char c = (char)buffer[i];
