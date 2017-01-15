@@ -35,7 +35,7 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 	private ActivityHandler mHandler = null;
 	
 	private SerialListener mListener = null;
-	private static SerialConnector mSerialConn = null;
+	private SerialConnector mSerialConn = null;
 	
 	private TextView mTextLog = null;
 	private TextView mTextInfo = null;
@@ -56,12 +56,13 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		// System
-		mContext = getApplicationContext();
+
 		
 		// Layouts
 		setContentView(R.layout.activity_arduino_controller);
+
+		// System
+		mContext = getApplicationContext();
 		
 		mTextLog = (TextView) findViewById(R.id.text_serial);
 		mTextLog.setMovementMethod(new ScrollingMovementMethod());
@@ -103,7 +104,7 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 		new Thread() {
 			public void run() {
 				try {
-					wsServer = new SimpleServer(new InetSocketAddress(ipAddress, PORT_FOR_WEBSOCKET));
+					wsServer = new SimpleServer(new InetSocketAddress(ipAddress, PORT_FOR_WEBSOCKET),ArduinoControllerActivity.this);
 					wsServer.run();
 				}catch(Exception e) {
 					e.printStackTrace();
@@ -120,6 +121,9 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 		Log.w("Httpd", "Web server initialized.");
 
 
+	}
+	public SerialConnector getSerialCon() {
+		return mSerialConn;
 	}
 
 	@Override
@@ -159,21 +163,22 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.button_send1:
-			mSerialConn.sendCommand("1");
+			mSerialConn.sendCommand("Button1");
 			break;
 		case R.id.button_send2:
-			mSerialConn.sendCommand("2");
+			mSerialConn.sendCommand("Button2");
 			break;
 		case R.id.button_send3:
-			mSerialConn.sendCommand("b33333");
+			mSerialConn.sendCommand("Button3");
 			break;
 		case R.id.button_send4:
-			mSerialConn.sendCommand("b44444");
+			mSerialConn.sendCommand("Button4");
 			break;
 		default:
 			break;
 		}
 	}
+
 	
 	
 	public class SerialListener {
@@ -193,6 +198,7 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 					mTextInfo.setText((String)arg3);
 					mTextLog.append((String)arg3);
 					mTextLog.append("\n");
+
 				}
 				break;
 			case Constants.MSG_SERIAL_ERROR:
@@ -217,12 +223,19 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 				break;
 			case Constants.MSG_READ_DATA_COUNT:
 				mTextLog.append(((String)msg.obj) + "\n");
+				Log.i("asdf",(String)msg.obj + "\n");
+				for(int i = 0 ;i<wsServer.clientList.size();i++) {
+					wsServer.clientList.get(i).send((String)msg.obj);
+				}
+
+
 				break;
 			case Constants.MSG_READ_DATA:
 				if(msg.obj != null) {
 					mTextInfo.setText((String)msg.obj);
 					mTextLog.append((String)msg.obj);
 					mTextLog.append("\n");
+
 				}
 				break;
 			case Constants.MSG_SERIAL_ERROR:
@@ -306,8 +319,6 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 			wsServer.clientList.get(i).send("server Message : " + msg);
 		}
 	}
-	public static SerialConnector getSerialConnection() {
-		return mSerialConn;
-	}
+
 	
 }

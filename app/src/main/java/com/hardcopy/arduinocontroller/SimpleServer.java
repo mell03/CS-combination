@@ -1,6 +1,8 @@
 package com.hardcopy.arduinocontroller;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import org.java_websocket.WebSocket;
@@ -16,8 +18,10 @@ import java.util.ArrayList;
 
 public class SimpleServer extends WebSocketServer {
     ArrayList<WebSocket> clientList = new ArrayList<WebSocket>();
-    public SimpleServer(InetSocketAddress address) {
+    Context mContext = null;
+    public SimpleServer(InetSocketAddress address,Context c) {
         super(address);
+        mContext = c;
     }
 
     @Override
@@ -37,7 +41,8 @@ public class SimpleServer extends WebSocketServer {
     public void onMessage(WebSocket conn, String message) {
         //System.out.println("received message from " + conn.getRemoteSocketAddress() + ": " + message);
         Log.i("ws onMesage","received message from " + conn.getRemoteSocketAddress() + ": "+ message);
-        ArduinoControllerActivity.getSerialConnection().sendCommand(message);
+        //ArduinoControllerActivity.getSerialConnection().sendCommand(message);
+        ((ArduinoControllerActivity)mContext).getSerialCon().sendCommand(message);
 
     }
 
