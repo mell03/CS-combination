@@ -62,28 +62,28 @@
             android:layout_height="50dip"
             android:layout_weight="1"
             android:textSize="14sp"
-            android:text="@string/button1" />
+            android:text="!on?" />
         <Button 
             android:id="@+id/button_send2"
             android:layout_width="0dip"
             android:layout_height="50dip"
             android:layout_weight="1"
             android:textSize="14sp"
-            android:text="@string/button2" />
+            android:text="!off?" />
         <Button 
             android:id="@+id/button_send3"
             android:layout_width="0dip"
             android:layout_height="50dip"
             android:layout_weight="1"
             android:textSize="14sp"
-            android:text="@string/button3" />
+            android:text="!bri100?" />
         <Button 
             android:id="@+id/button_send4"
             android:layout_width="0dip"
             android:layout_height="50dip"
             android:layout_weight="1"
             android:textSize="14sp"
-            android:text="@string/button4" />
+            android:text="!bri255?" />
     </LinearLayout>
     
 </LinearLayout>

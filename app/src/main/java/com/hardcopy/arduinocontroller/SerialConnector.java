@@ -93,7 +93,6 @@ public class SerialConnector {
 			mPort.setParameters(BAUD_RATE, 8, 1, 0);		// baudrate:9600, dataBits:8, stopBits:1, parity:N
 			byte buffer[] = new byte[50];
 			int numBytesRead = mPort.read(buffer, 1000);
-			Log.d("asdf", "Read " + numBytesRead + " bytes.");
 		} catch (IOException e) {
 			// Deal with error.
 			mListener.onReceive(Constants.MSG_SERIAL_ERROR, 0, 0, "Error: Cannot open port \n" + e.toString() + "\n", null);
@@ -202,6 +201,8 @@ public class SerialConnector {
 						if(numBytesRead > 0) {
 							Log.d(tag, "run : read bytes = " + numBytesRead);
 							// Print message length
+							//ArduinoControllerActivity.readCount=numBytesRead;
+							buffer[numBytesRead] = '\0';
 							Message msg = mHandler.obtainMessage(Constants.MSG_READ_DATA_COUNT, numBytesRead, 0, 
 									new String(buffer));
 

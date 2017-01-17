@@ -7,7 +7,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="b977828697e54250c39e43fce68143a6b277182c">
+        sha1="7158e239ea8f618bc1bc0bd83c96883c9be3f694">
         <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_2f7a730b51767b13b5f1604410f06002c0b56be9\classes.dex" />
     </item>
     <item
@@ -34,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="2542e25bb2a11672a3150f1b39c4197c59c4960a">
+        sha1="a249616e66d9787275211a6eb32974710892104f">
         <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_5b8afe86cd9a6ee24182527b070996e0afa8be86\classes.dex" />
     </item>
     <item
