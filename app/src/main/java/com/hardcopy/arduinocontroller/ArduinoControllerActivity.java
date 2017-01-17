@@ -51,7 +51,10 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 	String ipAddress;
 	SimpleServer wsServer;
 
+	private StringBuffer buffer =new StringBuffer("");;
+	static int readCount = 0;
 	private EditText textBoxForMsg;
+	private boolean startInst = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -163,16 +166,16 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 	public void onClick(View v) {
 		switch(v.getId()) {
 		case R.id.button_send1:
-			mSerialConn.sendCommand("Button1");
+			mSerialConn.sendCommand("!on?");
 			break;
 		case R.id.button_send2:
-			mSerialConn.sendCommand("Button2");
+			mSerialConn.sendCommand("!off?");
 			break;
 		case R.id.button_send3:
-			mSerialConn.sendCommand("Button3");
+			mSerialConn.sendCommand("!bri100?");
 			break;
 		case R.id.button_send4:
-			mSerialConn.sendCommand("Button4");
+			mSerialConn.sendCommand("!bri255?");
 			break;
 		default:
 			break;
@@ -198,7 +201,7 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 					mTextInfo.setText((String)arg3);
 					mTextLog.append((String)arg3);
 					mTextLog.append("\n");
-
+					Log.i("@@@@",(String)arg3);
 				}
 				break;
 			case Constants.MSG_SERIAL_ERROR:
@@ -222,8 +225,34 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 				mTextLog.append(Integer.toString(msg.arg1) + " device(s) found \n");
 				break;
 			case Constants.MSG_READ_DATA_COUNT:
-				mTextLog.append(((String)msg.obj) + "\n");
-				Log.i("asdf",(String)msg.obj + "\n");
+				//mTextLog.append(((String)msg.obj) + "\n");
+				String temp = msg.obj.toString();
+				temp = temp.substring(0,msg.arg1);
+				//Log.i("???",temp);
+
+				for(int i = 0 ;i<msg.arg1;i++) {
+					if(temp.charAt(i) == '!') {//시작
+						startInst = true;
+						buffer = new StringBuffer("");
+					}
+					else if(temp.charAt(i) == '?') {
+						String tempInst = buffer.toString();
+						startInst = false;
+
+						Log.i("buffer : " ,tempInst);
+
+						if(tempInst.equals("awake")) {
+							mSerialConn.sendCommand("!AWAKE?");
+						}
+						else {
+							mTextLog.append(buffer+"\n");
+						}
+
+					}
+					else if(startInst == true){
+						buffer.append(temp.charAt(i));
+					}
+				}
 				for(int i = 0 ;i<wsServer.clientList.size();i++) {
 					wsServer.clientList.get(i).send((String)msg.obj);
 				}
