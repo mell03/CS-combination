@@ -69,8 +69,8 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 		
 		mTextLog = (TextView) findViewById(R.id.text_serial);
 		mTextLog.setMovementMethod(new ScrollingMovementMethod());
-		mTextInfo = (TextView) findViewById(R.id.text_info);
-		mTextInfo.setMovementMethod(new ScrollingMovementMethod());
+		//mTextInfo = (TextView) findViewById(R.id.text_info);
+		//mTextInfo.setMovementMethod(new ScrollingMovementMethod());
 		mButton1 = (Button) findViewById(R.id.button_send1);
 		mButton1.setOnClickListener(this);
 		mButton2 = (Button) findViewById(R.id.button_send2);
@@ -80,7 +80,7 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 		mButton4 = (Button) findViewById(R.id.button_send4);
 		mButton4.setOnClickListener(this);
 
-		textBoxForMsg =(EditText) findViewById(R.id.edit_msg_to_send);
+		//textBoxForMsg =(EditText) findViewById(R.id.edit_msg_to_send);
 
 		
 		// Initialize
@@ -300,7 +300,7 @@ public class ArduinoControllerActivity extends Activity implements View.OnClickL
 					// Open file from SD Card
 					File root = Environment.getExternalStorageDirectory();
 					FileReader index = new FileReader(root.getAbsolutePath() +
-							"/www/chatClient.html");
+							"/www/index.html");
 					BufferedReader reader = new BufferedReader(index);
 					String line = "";
 					while ((line = reader.readLine()) != null) {

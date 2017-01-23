@@ -10,23 +10,15 @@ void setup() {
     digitalWrite(PORT_LED,HIGH);
     digitalWrite(PORT_LED_BRIGHTNESS,255);
     Serial.println("!start arduino Serial?");
-    for(int i = 1;i<=3;i++){
-      Serial.print("!");
-      Serial.print(i);
-      Serial.println("?");
-      delay(500);
-    
-    }
-
 }
 void loop() {
   delay(300);
-  if(isAwake == false){
+  if(isAwake == false){// for due board wake the application up // if(the application do not respond, it is in starting process
     Serial.println("!awake?");
   }
   
-  getResistance();
-  readSwitch();
-  readSerialInput();
+  getResistance(); // if new resistance is different from last resistance, send new resistance
+  readSwitch();      //check push button switch is pushed
+  readSerialInput(); // check which serial input is any command
 
 }

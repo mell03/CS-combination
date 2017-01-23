@@ -8,10 +8,10 @@
     <LinearLayout
         android:id="@+id/linear_info"
         android:layout_width="fill_parent" 
-        android:layout_height="0dip"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="#efefef"
 		android:orientation="vertical">
+		<!--
 	    <TextView
 			android:visibility="visible"
 	        android:id="@+id/text_info"
@@ -21,10 +21,12 @@
 	        android:textSize="32sp"
 	        android:text="@string/blank_msg"
 	         />
+	         -->
 		<TextView
 			android:id="@+id/ipaddr"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" />
+        <!--
 		<EditText
 			android:id="@+id/edit_msg_to_send"
 			android:layout_width="match_parent"
@@ -34,6 +36,7 @@
 			android:onClick="onClickSendBtn"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
+			-->
     </LinearLayout>
     
     <LinearLayout

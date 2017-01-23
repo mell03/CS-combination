@@ -188,7 +188,7 @@ public class SerialConnector {
 		@Override
 		public void run() 
 		{
-			byte buffer[] = new byte[128];
+			byte buffer[] = new byte[1200];
 			
 			while(!Thread.interrupted())
 			{
@@ -202,8 +202,8 @@ public class SerialConnector {
 							Log.d(tag, "run : read bytes = " + numBytesRead);
 							// Print message length
 							//ArduinoControllerActivity.readCount=numBytesRead;
-							buffer[numBytesRead] = '\0';
-							Message msg = mHandler.obtainMessage(Constants.MSG_READ_DATA_COUNT, numBytesRead, 0, 
+							buffer[numBytesRead+1] = '\0';
+							Message msg = mHandler.obtainMessage(Constants.MSG_READ_DATA_COUNT, numBytesRead+1, 0,
 									new String(buffer));
 
 							mHandler.sendMessage(msg);

@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="7158e239ea8f618bc1bc0bd83c96883c9be3f694">
-        <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_2f7a730b51767b13b5f1604410f06002c0b56be9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\rlarl\.gradle\caches\modules-2\files-2.1\com.nanohttpd\nanohttpd-webserver\2.1.1\bf117a262c04dfc3aac2c5d3087c439a22f960c9\nanohttpd-webserver-2.1.1.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="bf117a262c04dfc3aac2c5d3087c439a22f960c9">
-        <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\nanohttpd-webserver-2.1.1_c8063d487f7a75fcf695426930205f1687496c47\classes.dex" />
+        <dex dex="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\nanohttpd-webserver-2.1.1_c8063d487f7a75fcf695426930205f1687496c47\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_d801ec2e63907fff701c807d2824e680a045ac1e\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -26,25 +26,34 @@
         optimize="true"
         revision="25.0.2"
         sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_e2c48fd7160416fa0a9357f3cbdb758620487326\classes.dex" />
+        <dex dex="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_e2c48fd7160416fa0a9357f3cbdb758620487326\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jar="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a249616e66d9787275211a6eb32974710892104f">
-        <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_5b8afe86cd9a6ee24182527b070996e0afa8be86\classes.dex" />
+        sha1="67cfcb5bb13f4a5a2f1becb66921ea20bc6423d5">
+        <dex dex="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_674b844497b475c7924eeac7d89b096df81022d7\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jar="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_9e0735a9130534baedee9ea7751233721b814af3\classes.dex" />
+        sha1="ddffbec50185c896df85e861ad120efe3671eea7">
+        <dex dex="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_2ce26e3317f6ff0542bb83184fde23d322638c80\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_1e1254a92f7e6c19052f46e0de376579c4e1d5b9\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -53,16 +62,7 @@
         optimize="true"
         revision="25.0.2"
         sha1="82595b0b3190c8bdd988f307346e6edec9c09b72">
-        <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\nanohttpd-2.1.1_d247ffa84cb0a0602e15e2d7f92287b61c335c15\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="C:\Users\rlarl\Desktop\usb-serial-for-android-master\usb-serial-for-android-master\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_f7748530f1f7597e1b577b5fdc8251bd2daaa405\classes.dex" />
+        <dex dex="C:\Users\rlarl\Desktop\cs\ArduinoController\app\build\intermediates\transforms\dex\debug\folders\1000\10\nanohttpd-2.1.1_d247ffa84cb0a0602e15e2d7f92287b61c335c15\classes.dex" />
     </item>
 
 </items>

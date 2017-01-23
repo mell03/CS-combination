@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./main_style.css">
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+	      type="text/css"/>
+
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+	<script src='http://114.202.97.238:10000/check_user.cgi'></script>  <!-- 카메라 로그인 스크립트 -->
+	<script src="http://114.202.97.238:10000/get_camera_params.cgi"></script> <!-- 카메라 파라미터 -->
+
+	<script src='./camera.js'></script><!-- 카메라 관련 script -->
+	<script src='./websocket.js'></script> <!-- 웹소켓 관련 script-->
+	<script src='./resist_chart.js'></script> <!-- 그래프관련 script-->
+	<script src='./voice_recog.js'></script> <!-- 음성인식 script-->
+
+	<script>
+        var currentBrightness = Number('255');
+        function sendBrightness() {
+            currentBrightness = Number(document.getElementById('brightness').value);
+            ws.send('!BRI' + currentBrightness + '?');
+            //console.log("??here");
+        }
+
+        function parseServerMsg(msg) {
+            if (msg == "ON")
+                $('#led_status').text('현재상태 : ON');
+            else if (msg == "OFF")
+                $('#led_status').text('현재상태 : OFF');
+            else {
+                if (msg.substr(0, 6) == 'RESIST') {
+                    insertDataResist(msg.substr(6, msg.length - 6));
+                }
+                else if (msg.substr(0, 3) == 'BRI') {
+                    var returnBrightness = Number(msg.substr(3, 3));
+                    document.getElementById('brightness').value = returnBrightness;
+                    $('#val').text(returnBrightness);
+                }
+            }
+        }
+	</script>
+	<script>
+        function ledOnOff() {
+            ws.send("!REVERSELED?");
+        }
+	</script>
+</head>
+<body>
+<br>
+
+<button id='recognition_btn' onclick='onclickB()' style="width:200px;height:100px;font-size:2em">시작하기</button>
+<div id='recognition_result'>버튼을 클릭하고 말해주세요.</div>
+<div class='led_status'>
+	<button class='led_control' id='led_on_off_control' onclick='ledOnOff();'>LED ON/OFF</button>
+	<div id='led_status'>현재상태 : UNKNOWN</div>
+</div>
+<div class='led_brightness_control'>
+	<div id="slider"></div>
+	<input id='brightness' type='range' min='0' max='255' step='1' onchange='sendBrightness();'/>
+
+	Current Brightness : <span id="val">255</span>
+
+</div>
+<br>
+<br>
+<iframe name="action_zone" style="display:none"></iframe>
+<div class='video_container'>
+	<img src="http://114.202.97.238:10000/videostream.cgi?rate=0">
+</div>
+<button id='camera_up' class='camera_control_btn' onclick=upclicked()>상</button>
+<button class='camera_control_btn' onclick=downclicked()>하</button>
+<button class='camera_control_btn' onclick=leftclicked()>좌</button>
+<button class='camera_control_btn' onclick=rightclicked()>우</button>
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<script>
+    if (!('webkitSpeechRecognition' in window)) {
+        $('#recognition_result').text('지원하지 않는 브라우저입니다.');
+        //console.log('미지원 브라우저');
+    }
+</script>
+</body>
+</html>
