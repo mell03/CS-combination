@@ -1,8 +1,22 @@
 #include "vars.h"
+void printStatus(){
+
+  if(isLedOn) Serial.println("!ON?");
+  else Serial.println("!OFF?");
+
+  Serial.print("!BRI");
+  Serial.print(brightness);
+  Serial.println("?");
+
+    Serial.print("!RESIST");
+  Serial.print(resistance);
+  Serial.println("?");
+  
+}
 void ledOn() {
-	isLedOn = true;
-	Serial.println("!ON?");
-	digitalWrite(PORT_LED, HIGH);
+	isLedOn = true;   //led boolean flag
+	Serial.println("!ON?"); //return response
+	digitalWrite(PORT_LED, HIGH);  //turn on the led
 }
 void ledOff() {
 	isLedOn = false;
@@ -12,15 +26,19 @@ void ledOff() {
 
 void startInstruction(String inst){
 
-  if(inst=="AWAKE"){
+  if(inst=="AWAKE"){ // wake application up response
     isAwake=true;
     return;
   }
 
+  else if(inst =="START"){
+    printStatus();
+  }
+
   //ON led on
   //OFF led off
-  //bri 0~255 밝기조절
-  if(inst == "ON" || inst=="on"){
+  //bri 0~255 set brightness
+  else if(inst == "ON" || inst=="on"){
     ledOn();
   }
   else if(inst == "OFF"||inst =="off"){
@@ -62,8 +80,7 @@ void startInstruction(String inst){
 void readSerialInput() {
 	for (; Serial.peek() != -1;) {
 
-		char inputChar = (char)Serial.read();
-	
+		char inputChar = (char)Serial.read(); //read one character serial input
 
 		if (inputChar == '!' && isStart == false) {//input char is ! and not start state then start
 												   
@@ -87,22 +104,19 @@ void readSerialInput() {
 			instruction = "";
 		}
 		else if (!isStart) {
-							
-							//Serial.println("start");
 			isStart = true;
 			instruction += inputChar;
 		}
 		else if (isStart) {
 			instruction += inputChar;
-			//Serial.println(instruction);
 		}
 
 	}
 }
 void readSwitch(){
 
-  if(digitalRead(PORT_SWITCH) == LOW){
-    if(isLedOn == true){
+  if(digitalRead(PORT_SWITCH) == LOW){//LOW means switch pushed.
+    if(isLedOn == true){ //on if off // off if on
       ledOff();
     }
     else{
@@ -111,11 +125,12 @@ void readSwitch(){
   }
 }
 void getResistance(){
-  int tempResistance = analogRead(PORT_RESISTANCE);
-  if(Abs(tempResistance -  resistance) > 3){
+  int tempResistance = analogRead(PORT_RESISTANCE); //read resistance from analog port (analog port 0)
+  if(Abs(tempResistance -  resistance) > 3){ //the threshold of resistance difference
     resistance = tempResistance;
     Serial.print("!RESIST");
     Serial.print(resistance);
     Serial.println("?");
+    // Serial !RESUST[value]?
   }
 }
